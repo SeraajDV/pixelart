@@ -2,6 +2,8 @@
 
 Pixart is a browser-based pixel art editor built with React, TypeScript, and Vite. Draw on a 16 × 16 canvas, choose from the PICO-8 palette or a custom color, and export your artwork as a PNG.
 
+Try it online: [pixart-editor.netlify.app](https://pixart-editor.netlify.app/)
+
 ## Features
 
 - Draw with the pen, fill connected areas with the bucket, or erase pixels.
