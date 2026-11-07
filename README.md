@@ -1,75 +1,54 @@
-# React + TypeScript + Vite
+# Pixart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Pixart is a browser-based pixel art editor built with React, TypeScript, and Vite. Draw on a 16 × 16 canvas, choose from the PICO-8 palette or a custom color, and export your artwork as a PNG.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Draw with the pen, fill connected areas with the bucket, or erase pixels.
+- Choose from 16 PICO-8 colors or use the custom color picker.
+- Undo recent edits and clear the canvas.
+- Export the canvas as a PNG image.
+- Load the editor as a separate JavaScript chunk.
 
-## React Compiler
+## Getting started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Install dependencies:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Start the development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Open the local URL printed by Vite in your browser.
 
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Vite development server. |
+| `npm run build` | Type-check the application and create a production build. |
+| `npm run preview` | Serve the production build locally. |
+| `npm run lint` | Run ESLint. |
+
+## Project structure
+
+```text
+src/
+  App.tsx                         # App shell and lazy-loaded editor
+  components/
+    pixel-canvas.tsx              # Composes the pixel editor
+    pixel-canvas/
+      color-palette.tsx           # Palette and custom color picker
+      editor-toolbar.tsx          # Editing actions and tool selection
+      pixel-grid.tsx              # Interactive 16 × 16 grid
+      use-pixel-editor.ts         # Editor state and actions
+      pixel-operations.ts         # Pixel manipulation functions
+      export-png.ts               # PNG generation
+      constants.ts                # Grid and palette settings
+      types.ts                    # Shared editor types
 ```
